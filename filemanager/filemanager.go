@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"os"
+	"time"
 )
 
 type FileManager struct {
@@ -37,6 +38,8 @@ func (fm FileManager) WriteToJsonFile(data interface{}) error {
 		return err
 	}
 	defer file.Close()
+
+	time.Sleep(3 * time.Second) // Simulate a delay for writing
 
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
